@@ -9,11 +9,41 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user", name="user")
+     * @Route("/", name="index")
      */
     public function index(): Response
     {
-        return $this->render('user/index.html.twig', [
+        return $this->render('index.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
+    }
+
+    /**
+     * @Route("/user/{id}", name="user_profile")
+     */
+    public function show(): Response
+    {
+        return $this->render('user/profile.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
+    }
+
+    /**
+     * @Route("/user/{id}/edit", name="user_profile_edit")
+     */
+    public function update(): Response
+    {
+        return $this->render('user/edit-profile.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
+    }
+
+    /**
+     * @Route("/user/{id}/delete", name="user_profile_delete")
+     */
+    public function delete(): Response
+    {
+        return $this->render('user/delete-profile.html.twig', [
             'controller_name' => 'UserController',
         ]);
     }
